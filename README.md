@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/C:/Users/sutse/.gemini/antigravity/brain/1b754f28-c167-4f2f-af09-adc56f28428c/media__1774203559578.jpg" width="120" />
+  <img src="public/favicon.jpg" width="120" />
   <h1>CV Auto-Designer</h1>
   <p><strong>Craft your professional story with AI-powered precision.</strong></p>
   
@@ -17,11 +17,11 @@
 ## 🎨 Theme Showcase
 
 ````carousel
-![Modern Theme Dashboard](/C:/Users/sutse/.gemini/antigravity/brain/1b754f28-c167-4f2f-af09-adc56f28428c/modern_theme_dashboard_1774204328258.png)
+![Modern Theme Dashboard](src/assets/Modern_Theme.png)
 <!-- slide -->
-![Professional Theme Dashboard](/C:/Users/sutse/.gemini/antigravity/brain/1b754f28-c167-4f2f-af09-adc56f28428c/professional_theme_dashboard_1774204348204.png)
+![Professional Theme Dashboard](src/assets/Professional_Theme.png)
 <!-- slide -->
-![Creative Theme Dashboard](/C:/Users/sutse/.gemini/antigravity/brain/1b754f28-c167-4f2f-af09-adc56f28428c/creative_theme_dashboard_1774204366857.png)
+![Creative Theme Dashboard](src/assets/Creative_Theme.png)
 ````
 
 ## 🚀 Key Features
