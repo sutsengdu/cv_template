@@ -48,25 +48,31 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-      <header style={{ gridColumn: '1 / -1', marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className="app-container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem' }}>
+      <header style={{ gridColumn: '1 / -1', marginBottom: '3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', animation: 'fadeInUp 0.6s ease-out' }}>
         <div>
-          <h1 style={{ fontSize: '2.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <Sparkles className="text-primary" size={32} />
-            <span style={{ color: 'var(--primary)' }}>Auto-Designer</span>
+          <h1 style={{ fontSize: '3rem', display: 'flex', alignItems: 'center', gap: '1rem', margin: 0 }}>
+            <Sparkles className="text-primary" size={40} style={{ filter: 'drop-shadow(0 0 8px var(--primary-glow))' }} />
+            <span style={{ background: 'linear-gradient(135deg, #fff 0%, var(--primary) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Auto-Designer
+            </span>
           </h1>
-          <p style={{ color: 'var(--text-muted)' }}>Fill in your details, and we'll handle the professional design.</p>
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginTop: '0.5rem', fontWeight: 500 }}>
+            Craft your professional story with AI-powered precision.
+          </p>
         </div>
-        <button id="export-btn" className="btn btn-primary" onClick={handleExport}>
-          <Download size={20} />
+        <button id="export-btn" className="btn btn-primary" onClick={handleExport} style={{ fontSize: '1rem', padding: '1rem 2rem' }}>
+          <Download size={22} />
           Export PDF
         </button>
       </header>
 
-      <main className="glass-card animate-fade-in" style={{ padding: '2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', borderBottom: '1px solid var(--border)', paddingBottom: '1rem' }}>
-          <FileText size={24} className="text-primary" />
-          <h2 style={{ fontSize: '1.5rem' }}>Your Information</h2>
+      <main className="glass-card animate-fade-in" style={{ padding: '2.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid var(--border)', paddingBottom: '1.5rem' }}>
+          <div style={{ padding: '0.75rem', background: 'rgba(129, 140, 248, 0.1)', borderRadius: '1rem' }}>
+            <FileText size={28} className="text-primary" />
+          </div>
+          <h2 style={{ fontSize: '1.8rem', margin: 0 }}>Your Information</h2>
         </div>
         <CVForm data={cvData} setData={setCvData} />
       </main>
@@ -77,8 +83,16 @@ function App() {
         </div>
       </aside>
 
-      <footer style={{ gridColumn: '1 / -1', marginTop: '4rem', textAlign: 'center', borderTop: '1px solid var(--border)', paddingTop: '2rem', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
+      <footer style={{ gridColumn: '1 / -1', marginTop: '4rem', textAlign: 'center', borderTop: '1px solid var(--border)', paddingTop: '2rem', color: 'var(--text-muted)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <p style={{ fontWeight: 600, letterSpacing: '0.05em', color: 'rgba(255,255,255,0.7)' }}>
+          "built for people, not for profit"
+        </p>
         <p>© 2026 AI Resume Auto-Designer. All rights reserved.</p>
+        <a href="https://www.sutsengdu.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: 700, transition: 'all 0.3s ease', opacity: 0.8 }} 
+           onMouseOver={e => e.currentTarget.style.opacity = '1'} 
+           onMouseOut={e => e.currentTarget.style.opacity = '0.8'}>
+          www.sutsengdu.com
+        </a>
       </footer>
     </div>
   )

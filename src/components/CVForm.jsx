@@ -42,9 +42,12 @@ function CVForm({ data, setData }) {
   return (
     <div className="cv-form">
       {/* Design Settings */}
-      <section className="form-section" style={{ marginBottom: '2rem', background: 'rgba(99, 102, 241, 0.05)', padding: '1.5rem', borderRadius: '0.75rem', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
-        <h3 className="input-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', marginBottom: '1rem' }}>
-          <Sparkles size={18} className="text-primary" /> Design Settings
+      <section className="form-section glass-card" style={{ marginBottom: '2.5rem', padding: '2rem', background: 'rgba(129, 140, 248, 0.03)', border: '1px solid rgba(129, 140, 248, 0.15)' }}>
+        <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', marginBottom: '1.5rem', fontSize: '1.2rem' }}>
+          <div style={{ padding: '0.5rem', background: 'rgba(129, 140, 248, 0.15)', borderRadius: '0.5rem' }}>
+            <Sparkles size={20} className="text-primary" />
+          </div>
+          Design Settings
         </h3>
 
         <div className="input-group">
@@ -154,34 +157,43 @@ function CVForm({ data, setData }) {
       </section>
 
       {/* Personal Info */}
-      <section className="form-section">
-        <h3 className="input-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', marginBottom: '1rem' }}>
-          <User size={18} className="text-primary" /> Personal Information
+      <section className="form-section" style={{ marginBottom: '3rem' }}>
+        <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', marginBottom: '1.5rem', fontSize: '1.2rem' }}>
+          <div style={{ padding: '0.5rem', background: 'rgba(129, 140, 248, 0.1)', borderRadius: '0.5rem' }}>
+            <User size={20} className="text-primary" />
+          </div>
+          Personal Information
         </h3>
-
-        <div className="personal-info-grid" style={{ marginBottom: '1.5rem', background: 'rgba(255,255,255,0.02)', padding: '1.5rem', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+ 
+        <div style={{ display: 'flex', gap: '2rem', marginBottom: '2rem', alignItems: 'flex-start' }}>
           <div style={{ textAlign: 'center' }}>
             <div
               onClick={() => document.getElementById('photo-upload').click()}
               style={{
-                width: '120px',
-                height: '120px',
+                width: '130px',
+                height: '130px',
                 margin: '0 auto',
-                borderRadius: '1rem',
-                background: 'rgba(255,255,255,0.05)',
+                borderRadius: '1.25rem',
+                background: 'rgba(255,255,255,0.03)',
                 border: '2px dashed rgba(255,255,255,0.1)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
                 overflow: 'hidden',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                boxShadow: 'inset 0 4px 12px rgba(0,0,0,0.2)'
               }}
+              onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
+              onMouseOut={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
             >
               {data.personalInfo.photo ? (
                 <img src={data.personalInfo.photo} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
-                <Plus size={32} className="text-muted" />
+                <div style={{ textAlign: 'center' }}>
+                  <Plus size={32} className="text-muted" style={{ marginBottom: '0.25rem' }} />
+                  <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Add Photo</p>
+                </div>
               )}
             </div>
             <input
@@ -200,9 +212,6 @@ function CVForm({ data, setData }) {
                 }
               }}
             />
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-              {data.personalInfo.photo ? 'Change Photo' : 'Upload Photo'}
-            </p>
           </div>
 
           <div style={{ flex: 1 }}>
@@ -233,104 +242,138 @@ function CVForm({ data, setData }) {
       </section>
 
       {/* Experience */}
-      <section className="form-section" style={{ marginTop: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-          <h3 className="input-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', margin: 0 }}>
-            <Briefcase size={18} className="text-primary" /> Work Experience
+      <section className="form-section" style={{ marginTop: '3rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+          <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', margin: 0, fontSize: '1.2rem' }}>
+            <div style={{ padding: '0.5rem', background: 'rgba(129, 140, 248, 0.1)', borderRadius: '0.5rem' }}>
+              <Briefcase size={20} className="text-primary" />
+            </div>
+            Work Experience
           </h3>
-          <button className="btn btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem' }} onClick={() => addItem('experience')}>
-            <Plus size={14} /> Add
+          <button className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem' }} onClick={() => addItem('experience')}>
+            <Plus size={16} /> Add Experience
           </button>
         </div>
         {data.experience.map((exp) => (
-          <div key={exp.id} style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '0.5rem', marginBottom: '1rem', position: 'relative' }}>
-            <Trash2 size={16} className="text-accent" style={{ position: 'absolute', top: '1rem', right: '1rem', cursor: 'pointer' }} onClick={() => removeItem('experience', exp.id)} />
-            <div className="input-group">
-              <label className="input-label">Company</label>
-              <input className="input-field" type="text" value={exp.company} onChange={(e) => handleChange('experience', 'company', e.target.value, exp.id)} />
+          <div key={exp.id} className="glass-card" style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', marginBottom: '1.5rem', position: 'relative', border: '1px solid var(--border)' }}>
+            <div 
+              style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', padding: '0.5rem', borderRadius: '0.5rem', background: 'rgba(244, 63, 94, 0.1)', cursor: 'pointer', transition: 'all 0.2s' }}
+              onClick={() => removeItem('experience', exp.id)}
+              onMouseOver={(e) => e.currentTarget.style.background = 'rgba(244, 63, 94, 0.2)'}
+              onMouseOut={(e) => e.currentTarget.style.background = 'rgba(244, 63, 94, 0.1)'}
+            >
+              <Trash2 size={16} className="text-accent" />
             </div>
-            <div className="input-group">
-              <label className="input-label">Role</label>
-              <input className="input-field" type="text" value={exp.role} onChange={(e) => handleChange('experience', 'role', e.target.value, exp.id)} />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="input-group">
+                <label className="input-label">Company</label>
+                <input className="input-field" type="text" value={exp.company} onChange={(e) => handleChange('experience', 'company', e.target.value, exp.id)} />
+              </div>
+              <div className="input-group">
+                <label className="input-label">Role</label>
+                <input className="input-field" type="text" value={exp.role} onChange={(e) => handleChange('experience', 'role', e.target.value, exp.id)} />
+              </div>
             </div>
             <div className="input-group">
               <label className="input-label">Duration</label>
               <input className="input-field" type="text" value={exp.duration} onChange={(e) => handleChange('experience', 'duration', e.target.value, exp.id)} />
             </div>
-            <div className="input-group">
+            <div className="input-group" style={{ marginBottom: 0 }}>
               <label className="input-label">Description</label>
-              <textarea className="input-field" value={exp.description} onChange={(e) => handleChange('experience', 'description', e.target.value, exp.id)} />
+              <textarea className="input-field" value={exp.description} onChange={(e) => handleChange('experience', 'description', e.target.value, exp.id)} style={{ minHeight: '120px' }} />
             </div>
           </div>
         ))}
       </section>
 
       {/* Education */}
-      <section className="form-section" style={{ marginTop: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-          <h3 className="input-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', margin: 0 }}>
-            <GraduationCap size={18} className="text-primary" /> Education
+      <section className="form-section" style={{ marginTop: '3rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+          <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', margin: 0, fontSize: '1.2rem' }}>
+            <div style={{ padding: '0.5rem', background: 'rgba(129, 140, 248, 0.1)', borderRadius: '0.5rem' }}>
+              <GraduationCap size={20} className="text-primary" />
+            </div>
+            Education
           </h3>
-          <button className="btn btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.75rem' }} onClick={() => addItem('education')}>
-            <Plus size={14} /> Add
+          <button className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem' }} onClick={() => addItem('education')}>
+            <Plus size={16} /> Add Education
           </button>
         </div>
         {data.education.map((edu) => (
-          <div key={edu.id} style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '0.5rem', marginBottom: '1rem', position: 'relative' }}>
-            <Trash2 size={16} className="text-accent" style={{ position: 'absolute', top: '1rem', right: '1rem', cursor: 'pointer' }} onClick={() => removeItem('education', edu.id)} />
+          <div key={edu.id} className="glass-card" style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', marginBottom: '1.5rem', position: 'relative', border: '1px solid var(--border)' }}>
+            <div 
+              style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', padding: '0.5rem', borderRadius: '0.5rem', background: 'rgba(244, 63, 94, 0.1)', cursor: 'pointer', transition: 'all 0.2s' }}
+              onClick={() => removeItem('education', edu.id)}
+              onMouseOver={(e) => e.currentTarget.style.background = 'rgba(244, 63, 94, 0.2)'}
+              onMouseOut={(e) => e.currentTarget.style.background = 'rgba(244, 63, 94, 0.1)'}
+            >
+              <Trash2 size={16} className="text-accent" />
+            </div>
             <div className="input-group">
               <label className="input-label">School / University</label>
               <input className="input-field" type="text" value={edu.school} onChange={(e) => handleChange('education', 'school', e.target.value, edu.id)} />
             </div>
-            <div className="input-group">
-              <label className="input-label">Degree</label>
-              <input className="input-field" type="text" value={edu.degree} onChange={(e) => handleChange('education', 'degree', e.target.value, edu.id)} />
-            </div>
-            <div className="input-group">
-              <label className="input-label">Year</label>
-              <input className="input-field" type="text" value={edu.year} onChange={(e) => handleChange('education', 'year', e.target.value, edu.id)} />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="input-group" style={{ marginBottom: 0 }}>
+                <label className="input-label">Degree</label>
+                <input className="input-field" type="text" value={edu.degree} onChange={(e) => handleChange('education', 'degree', e.target.value, edu.id)} />
+              </div>
+              <div className="input-group" style={{ marginBottom: 0 }}>
+                <label className="input-label">Year</label>
+                <input className="input-field" type="text" value={edu.year} onChange={(e) => handleChange('education', 'year', e.target.value, edu.id)} />
+              </div>
             </div>
           </div>
         ))}
       </section>
 
       {/* Skills */}
-      <section className="form-section" style={{ marginTop: '2rem' }}>
-        <h3 className="input-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', marginBottom: '1rem' }}>
-          <Award size={18} className="text-primary" /> Skills (Comma separated)
+      <section className="form-section" style={{ marginTop: '3rem' }}>
+        <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', marginBottom: '1.5rem', fontSize: '1.2rem' }}>
+          <div style={{ padding: '0.5rem', background: 'rgba(129, 140, 248, 0.1)', borderRadius: '0.5rem' }}>
+            <Award size={20} className="text-primary" />
+          </div>
+          Skills (Comma separated)
         </h3>
         <textarea
           className="input-field"
           placeholder="e.g. React, Node.js, Design..."
           value={data.skills.join(', ')}
           onChange={(e) => setData(prev => ({ ...prev, skills: e.target.value.split(',').map(s => s.trim()) }))}
+          style={{ minHeight: '100px' }}
         />
       </section>
 
       {/* Languages and Interests */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginTop: '3rem' }}>
         <section className="form-section">
-          <h3 className="input-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', marginBottom: '1rem' }}>
-            <Globe size={18} className="text-primary" /> Languages
+          <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', marginBottom: '1.25rem', fontSize: '1.2rem' }}>
+            <div style={{ padding: '0.5rem', background: 'rgba(129, 140, 248, 0.1)', borderRadius: '0.5rem' }}>
+              <Globe size={20} className="text-primary" />
+            </div>
+            Languages
           </h3>
           <textarea
             className="input-field"
             placeholder="e.g. English (Native), French..."
             value={data.languages.join(', ')}
             onChange={(e) => setData(prev => ({ ...prev, languages: e.target.value.split(',').map(s => s.trim()) }))}
-            style={{ minHeight: '80px' }}
+            style={{ minHeight: '100px' }}
           />
         </section>
         <section className="form-section">
-          <h3 className="input-label" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', marginBottom: '1rem' }}>
-            <Sparkles size={18} className="text-primary" /> Interests
+          <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-main)', marginBottom: '1.25rem', fontSize: '1.2rem' }}>
+            <div style={{ padding: '0.5rem', background: 'rgba(129, 140, 248, 0.1)', borderRadius: '0.5rem' }}>
+              <Sparkles size={20} className="text-primary" />
+            </div>
+            Interests
           </h3>
           <textarea
             className="input-field"
             placeholder="e.g. Travel, Chess..."
             value={data.interests.join(', ')}
             onChange={(e) => setData(prev => ({ ...prev, interests: e.target.value.split(',').map(s => s.trim()) }))}
-            style={{ minHeight: '80px' }}
+            style={{ minHeight: '100px' }}
           />
         </section>
       </div>

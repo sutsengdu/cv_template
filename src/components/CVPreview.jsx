@@ -1,4 +1,5 @@
 import React from 'react'
+import { Mail, Phone, MapPin, Globe, Award, Briefcase, GraduationCap, Sparkles } from 'lucide-react'
 
 function CVPreview({ data }) {
   const { personalInfo, education, experience, skills, languages, interests, design } = data
@@ -57,67 +58,69 @@ function CVPreview({ data }) {
   }
 
   const renderModern = () => (
-    <div id="cv-preview-container" style={{ ...paperStyles, padding: '40px', color: textColor, fontFamily: 'Inter', display: 'flex', flexDirection: 'column' }}>
-      <header style={{ borderBottom: `1px solid ${primaryColor}`, paddingBottom: '12px', marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+    <div id="cv-preview-container" style={{ ...paperStyles, padding: '45px', color: textColor, fontFamily: 'Inter', display: 'flex', flexDirection: 'column' }}>
+      <header style={{ borderBottom: `2.5px solid ${primaryColor}`, paddingBottom: '20px', marginBottom: '25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 style={{ fontSize: '22px', color: textColor, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: 'normal', lineHeight: '1.2' }}>{personalInfo.name || 'Your Name'}</h1>
-          <h2 style={{ fontSize: '13px', color: primaryColor, fontWeight: 500, marginBottom: '10px', letterSpacing: 'normal' }}>{personalInfo.title || 'Professional Title'}</h2>
-          <div style={{ display: 'flex', gap: '12px', fontSize: '11px', color: textColor, opacity: 0.8, flexWrap: 'wrap' }}>
-            {personalInfo.email && <span>{personalInfo.email}</span>}
-            {personalInfo.phone && <span>{personalInfo.phone}</span>}
-            {personalInfo.location && <span>{personalInfo.location}</span>}
+          <h1 style={{ fontSize: '32px', color: textColor, marginBottom: '6px', fontFamily: 'Outfit', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: '1' }}>{personalInfo.name || 'Your Name'}</h1>
+          <h2 style={{ fontSize: '16px', color: primaryColor, fontWeight: 600, marginBottom: '15px', fontFamily: 'Outfit', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{personalInfo.title || 'Professional Title'}</h2>
+          <div style={{ display: 'flex', gap: '15px', fontSize: '11px', color: textColor, opacity: 0.9, flexWrap: 'wrap', fontWeight: 500 }}>
+            {personalInfo.email && <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Mail size={12} color={primaryColor} /> {personalInfo.email}</span>}
+            {personalInfo.phone && <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Phone size={12} color={primaryColor} /> {personalInfo.phone}</span>}
+            {personalInfo.location && <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><MapPin size={12} color={primaryColor} /> {personalInfo.location}</span>}
           </div>
         </div>
         {personalInfo.photo && (
-          <img src={personalInfo.photo} alt="Profile" style={{ width: '70px', height: '70px', borderRadius: '0.5rem', objectFit: 'cover', border: `1px solid ${primaryColor}22` }} />
+          <div style={{ padding: '4px', background: `${primaryColor}11`, borderRadius: '1rem', border: `1px solid ${primaryColor}33` }}>
+            <img src={personalInfo.photo} alt="Profile" style={{ width: '85px', height: '85px', borderRadius: '0.9rem', objectFit: 'cover' }} />
+          </div>
         )}
       </header>
-
+ 
       {personalInfo.summary && (
-        <section style={{ marginBottom: '20px' }}>
-          <h3 style={{ fontSize: '11px', borderBottom: '1px solid #e2e8f0', paddingBottom: '3px', marginBottom: '8px', textTransform: 'uppercase', color: primaryColor, letterSpacing: 'normal' }}>Professional Summary</h3>
-          <p style={{ fontSize: '12px', lineHeight: '1.5', wordSpacing: '0.3px' }}>{personalInfo.summary}</p>
+        <section style={{ marginBottom: '25px' }}>
+          <h3 style={{ fontSize: '12px', marginBottom: '10px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Profile Summary</h3>
+          <p style={{ fontSize: '12.5px', lineHeight: '1.6', color: textColor, opacity: 0.9 }}>{personalInfo.summary}</p>
         </section>
       )}
-
+ 
       {experience.length > 0 && (
-        <section style={{ marginBottom: '20px' }}>
-          <h3 style={{ fontSize: '11px', color: '#0f172a', borderBottom: '1px solid #e2e8f0', paddingBottom: '3px', marginBottom: '12px', textTransform: 'uppercase', color: primaryColor, letterSpacing: 'normal' }}>Experience</h3>
+        <section style={{ marginBottom: '25px' }}>
+          <h3 style={{ fontSize: '12px', borderBottom: '1px solid #f1f5f9', paddingBottom: '6px', marginBottom: '15px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Experience</h3>
           {experience.map((exp) => (
-            <div key={exp.id} style={{ marginBottom: '15px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3px' }}>
-                <h4 style={{ fontSize: '13px', fontWeight: 700 }}>{exp.role || 'Role'}</h4>
-                <span style={{ fontSize: '11px' }}>{exp.duration}</span>
+            <div key={exp.id} style={{ marginBottom: '20px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                <h4 style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'Outfit' }}>{exp.role || 'Role'}</h4>
+                <span style={{ fontSize: '11px', fontWeight: 600, opacity: 0.7 }}>{exp.duration}</span>
               </div>
-              <p style={{ fontSize: '12px', fontStyle: 'italic', color: primaryColor, marginBottom: '4px' }}>{exp.company || 'Company Name'}</p>
-              <p style={{ fontSize: '11px', lineHeight: '1.5', whiteSpace: 'pre-wrap', wordSpacing: '0.3px' }}>{exp.description}</p>
+              <p style={{ fontSize: '12.5px', fontWeight: 600, color: primaryColor, marginBottom: '6px' }}>{exp.company || 'Company Name'}</p>
+              <p style={{ fontSize: '11.5px', lineHeight: '1.6', color: textColor, opacity: 0.85, whiteSpace: 'pre-wrap' }}>{exp.description}</p>
             </div>
           ))}
         </section>
       )}
-
+ 
       {education.length > 0 && (
-        <section style={{ marginBottom: '20px' }}>
-          <h3 style={{ fontSize: '11px', color: '#0f172a', borderBottom: '1px solid #e2e8f0', paddingBottom: '3px', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.4px', color: primaryColor }}>Education</h3>
+        <section style={{ marginBottom: '25px' }}>
+          <h3 style={{ fontSize: '12px', borderBottom: '1px solid #f1f5f9', paddingBottom: '6px', marginBottom: '15px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Education</h3>
           {education.map((edu) => (
-            <div key={edu.id} style={{ marginBottom: '10px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1px' }}>
-                <h4 style={{ fontSize: '13px', fontWeight: 700, color: textColor }}>{edu.degree || 'Degree'}</h4>
-                <span style={{ fontSize: '11px', color: textColor, opacity: 0.8 }}>{edu.year}</span>
+            <div key={edu.id} style={{ marginBottom: '12px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                <h4 style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'Outfit' }}>{edu.degree || 'Degree'}</h4>
+                <span style={{ fontSize: '11px', fontWeight: 600, opacity: 0.7 }}>{edu.year}</span>
               </div>
-              <p style={{ fontSize: '12px', color: primaryColor }}>{edu.school || 'School Name'}</p>
+              <p style={{ fontSize: '12.5px', fontWeight: 600, color: primaryColor }}>{edu.school || 'School Name'}</p>
             </div>
           ))}
         </section>
       )}
-
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+ 
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '30px', marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid #f1f5f9' }}>
         {skills.length > 0 && skills[0] !== '' && (
           <section>
-            <h3 style={{ fontSize: '11px', borderBottom: '1px solid #e2e8f0', paddingBottom: '3px', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.4px', color: primaryColor }}>Skills</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+            <h3 style={{ fontSize: '11px', marginBottom: '10px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Expertise</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
               {skills.map((skill, index) => (
-                <span key={index} style={{ padding: '1px 5px', backgroundColor: `${textColor}11`, borderRadius: '2px', fontSize: '10px', color: textColor }}>
+                <span key={index} style={{ padding: '3px 8px', backgroundColor: `${primaryColor}08`, border: `1px solid ${primaryColor}15`, borderRadius: '4px', fontSize: '10px', fontWeight: 600, color: textColor }}>
                   {skill}
                 </span>
               ))}
@@ -126,12 +129,28 @@ function CVPreview({ data }) {
         )}
         {languages.length > 0 && languages[0] !== '' && (
           <section>
-            <h3 style={{ fontSize: '11px', borderBottom: '1px solid #e2e8f0', paddingBottom: '3px', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.4px', color: primaryColor }}>Languages</h3>
-            <ul style={{ paddingLeft: '11px', margin: 0 }}>
+            <h3 style={{ fontSize: '11px', marginBottom: '10px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Languages</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {languages.map((lang, index) => (
-                <li key={index} style={{ fontSize: '11px', color: textColor }}>{lang}</li>
+                <div key={index} style={{ fontSize: '11px', color: textColor, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: primaryColor }}></div>
+                  {lang}
+                </div>
               ))}
-            </ul>
+            </div>
+          </section>
+        )}
+        {interests.length > 0 && interests[0] !== '' && (
+          <section>
+            <h3 style={{ fontSize: '11px', marginBottom: '10px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Interests</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              {interests.map((interest, index) => (
+                <div key={index} style={{ fontSize: '11px', color: textColor, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: primaryColor }}></div>
+                  {interest}
+                </div>
+              ))}
+            </div>
           </section>
         )}
       </div>
@@ -139,65 +158,87 @@ function CVPreview({ data }) {
   )
 
   const renderProfessional = () => (
-    <div id="cv-preview-container" style={{ ...paperStyles, display: 'grid', gridTemplateColumns: '250px 1fr', fontFamily: 'Inter', color: textColor }}>
+    <div id="cv-preview-container" style={{ ...paperStyles, display: 'grid', gridTemplateColumns: '270px 1fr', fontFamily: 'Inter', color: textColor }}>
       {/* Sidebar */}
-      <div style={{ backgroundColor: '#f8fafc', padding: '40px 30px', borderRight: '1px solid #e2e8f0' }}>
+      <div style={{ backgroundColor: '#fcfcfc', padding: '50px 35px', borderRight: '1px solid #f1f5f9' }}>
         {personalInfo.photo && (
-          <div style={{ marginBottom: '20px', textAlign: 'center' }}>
-            <img src={personalInfo.photo} alt="Profile" style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${primaryColor}` }} />
+          <div style={{ marginBottom: '30px', position: 'relative' }}>
+            <div style={{ width: '120px', height: '120px', margin: '0 auto', borderRadius: '50%', border: `4px solid white`, boxShadow: '0 4px 15px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+              <img src={personalInfo.photo} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
           </div>
         )}
-        <div style={{ marginBottom: '28px' }}>
-          <h1 style={{ fontSize: '18px', color: textColor, marginBottom: '3px', fontWeight: 800, letterSpacing: '0.8px' }}>{personalInfo.name || 'Your Name'}</h1>
-          <p style={{ fontSize: '12px', color: primaryColor, fontWeight: 500, letterSpacing: '0.3px' }}>{personalInfo.title}</p>
-        </div>
- 
-        <section style={{ marginBottom: '20px' }}>
-          <h3 style={{ fontSize: '10px', color: textColor, opacity: 0.6, textTransform: 'uppercase', letterSpacing: '0.6px', marginBottom: '6px', fontWeight: 700 }}>Contact</h3>
-          <p style={{ fontSize: '10px', color: textColor, marginBottom: '3px' }}>{personalInfo.email}</p>
-          <p style={{ fontSize: '10px', color: textColor, marginBottom: '3px' }}>{personalInfo.phone}</p>
-          <p style={{ fontSize: '10px', color: textColor }}>{personalInfo.location}</p>
+        
+        <section style={{ marginBottom: '30px' }}>
+          <h3 style={{ fontSize: '11px', color: primaryColor, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '15px', fontWeight: 800 }}>Contact Info</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {personalInfo.email && <div style={{ fontSize: '11px', display: 'flex', alignItems: 'center', gap: '8px' }}><Mail size={12} /> {personalInfo.email}</div>}
+            {personalInfo.phone && <div style={{ fontSize: '11px', display: 'flex', alignItems: 'center', gap: '8px' }}><Phone size={12} /> {personalInfo.phone}</div>}
+            {personalInfo.location && <div style={{ fontSize: '11px', display: 'flex', alignItems: 'center', gap: '8px' }}><MapPin size={12} /> {personalInfo.location}</div>}
+          </div>
         </section>
-
-        {skills.length > 0 && (
+ 
+        {skills.length > 0 && skills[0] !== '' && (
           <section style={{ marginBottom: '30px' }}>
-            <h3 style={{ fontSize: '12px', color: textColor, opacity: 0.6, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px', fontWeight: 700 }}>Skills</h3>
-            <ul style={{ padding: 0, listStyle: 'none' }}>
-              {skills.map((s, i) => <li key={i} style={{ fontSize: '12px', color: textColor, marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: primaryColor }}></span> {s}
-              </li>)}
-            </ul>
+            <h3 style={{ fontSize: '11px', color: primaryColor, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '15px', fontWeight: 800 }}>Expertise</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {skills.map((s, i) => <div key={i} style={{ fontSize: '12px', fontWeight: 500 }}>{s}</div>)}
+            </div>
+          </section>
+        )}
+  
+        {languages.length > 0 && languages[0] !== '' && (
+          <section style={{ marginBottom: '30px' }}>
+            <h3 style={{ fontSize: '11px', color: primaryColor, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '15px', fontWeight: 800 }}>Languages</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {languages.map((l, i) => <div key={i} style={{ fontSize: '11.5px', color: textColor }}>{l}</div>)}
+            </div>
+          </section>
+        )}
+  
+        {interests.length > 0 && interests[0] !== '' && (
+          <section>
+            <h3 style={{ fontSize: '11px', color: primaryColor, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '15px', fontWeight: 800 }}>Interests</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {interests.map((it, i) => <div key={i} style={{ fontSize: '11.5px', color: textColor }}>{it}</div>)}
+            </div>
           </section>
         )}
       </div>
-
+ 
       {/* Main Content */}
-      <div style={{ padding: '32px 24px' }}>
-        <section style={{ marginBottom: '28px' }}>
-          <h3 style={{ fontSize: '13px', color: '#0f172a', marginBottom: '10px', borderBottom: `2px solid ${primaryColor}`, display: 'inline-block', letterSpacing: '0.8px' }}>Profile</h3>
-          <p style={{ fontSize: '12px', lineHeight: '1.5', color: textColor, letterSpacing: '0.2px', wordSpacing: '0.3px' }}>{personalInfo.summary}</p>
-        </section>
+      <div style={{ padding: '50px 40px', position: 'relative' }}>
+        <div style={{ position: 'absolute', top: '50px', left: '0', width: '3px', height: '100px', background: primaryColor }}></div>
+        <header style={{ marginBottom: '40px' }}>
+          <h1 style={{ fontSize: '38px', fontFamily: 'Playfair Display', fontWeight: 700, margin: 0, lineHeight: '1.2' }}>{personalInfo.name || 'Your Name'}</h1>
+          <p style={{ fontSize: '16px', color: primaryColor, fontWeight: 600, marginTop: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{personalInfo.title}</p>
+        </header>
 
-        <section style={{ marginBottom: '28px' }}>
-          <h3 style={{ fontSize: '13px', color: '#0f172a', marginBottom: '12px', borderBottom: `2px solid ${primaryColor}`, display: 'inline-block' }}>Experience</h3>
+        <section style={{ marginBottom: '35px' }}>
+          <h3 style={{ fontSize: '13px', color: primaryColor, marginBottom: '12px', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.1em' }}>Profile</h3>
+          <p style={{ fontSize: '13px', lineHeight: '1.7', color: textColor, opacity: 0.9 }}>{personalInfo.summary}</p>
+        </section>
+ 
+        <section style={{ marginBottom: '35px' }}>
+          <h3 style={{ fontSize: '13px', color: primaryColor, marginBottom: '15px', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.1em' }}>Professional Experience</h3>
           {experience.map(exp => (
-            <div key={exp.id} style={{ marginBottom: '18px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <h4 style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.4px' }}>{exp.role}</h4>
-                <span style={{ fontSize: '10px', letterSpacing: '0.2px' }}>{exp.duration}</span>
+            <div key={exp.id} style={{ marginBottom: '22px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
+                <h4 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Playfair Display' }}>{exp.role}</h4>
+                <span style={{ fontSize: '11px', fontWeight: 600, opacity: 0.7 }}>{exp.duration}</span>
               </div>
-              <p style={{ fontSize: '12px', color: primaryColor, marginBottom: '5px', letterSpacing: '0.2px' }}>{exp.company}</p>
-              <p style={{ fontSize: '11px', color: textColor, lineHeight: '1.5', letterSpacing: '0.2px', wordSpacing: '0.3px' }}>{exp.description}</p>
+              <p style={{ fontSize: '13px', color: primaryColor, fontWeight: 600, marginBottom: '8px' }}>{exp.company}</p>
+              <p style={{ fontSize: '12px', color: textColor, lineHeight: '1.7', opacity: 0.85 }}>{exp.description}</p>
             </div>
           ))}
         </section>
-
+ 
         <section>
-          <h3 style={{ fontSize: '16px', color: textColor, marginBottom: '20px', borderBottom: `2px solid ${primaryColor}`, display: 'inline-block' }}>Education</h3>
+          <h3 style={{ fontSize: '13px', color: primaryColor, marginBottom: '15px', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.1em' }}>Education</h3>
           {education.map(edu => (
             <div key={edu.id} style={{ marginBottom: '15px' }}>
-              <h4 style={{ fontSize: '14px', fontWeight: 700, color: textColor }}>{edu.degree}</h4>
-              <p style={{ fontSize: '13px', color: textColor, opacity: 0.8 }}>{edu.school} | {edu.year}</p>
+              <h4 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Playfair Display' }}>{edu.degree}</h4>
+              <p style={{ fontSize: '13px', color: textColor, opacity: 0.8, marginTop: '2px' }}>{edu.school} | {edu.year}</p>
             </div>
           ))}
         </section>
@@ -207,59 +248,111 @@ function CVPreview({ data }) {
 
   const renderCreative = () => (
     <div id="cv-preview-container" style={{ ...paperStyles, padding: '0', fontFamily: 'Outfit' }}>
-      <div style={{ backgroundColor: primaryColor, padding: '40px 28px', color: 'white', display: 'flex', gap: '20px', alignItems: 'center' }}>
+      <header style={{ 
+        background: `linear-gradient(135deg, ${primaryColor}, ${primaryColor}dd)`, 
+        padding: '50px 40px', 
+        color: 'white', 
+        display: 'flex', 
+        gap: '30px', 
+        alignItems: 'center',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* Subtle decorative circles */}
+        <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)' }}></div>
+        <div style={{ position: 'absolute', bottom: '-20%', left: '10%', width: '150px', height: '150px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)' }}></div>
+
         {personalInfo.photo && (
-          <img src={personalInfo.photo} alt="Profile" style={{ width: '85px', height: '85px', borderRadius: '1rem', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.3)' }} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <img src={personalInfo.photo} alt="Profile" style={{ width: '110px', height: '110px', borderRadius: '2rem', objectFit: 'cover', border: '3px solid rgba(255,255,255,0.4)', boxShadow: '0 8px 20px rgba(0,0,0,0.2)' }} />
+          </div>
         )}
-        <div>
-          <h1 style={{ fontSize: '24px', margin: 0, fontWeight: 900, lineHeight: '1.2' }}>{personalInfo.name}</h1>
-          <p style={{ fontSize: '14px', opacity: 0.9, marginTop: '6px' }}>{personalInfo.title}</p>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <h1 style={{ fontSize: '36px', margin: 0, fontWeight: 900, lineHeight: '1.1', letterSpacing: '-0.02em' }}>{personalInfo.name}</h1>
+          <p style={{ fontSize: '16px', opacity: 0.95, marginTop: '8px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{personalInfo.title}</p>
+          <div style={{ display: 'flex', gap: '15px', fontSize: '11px', marginTop: '15px', opacity: 0.9, flexWrap: 'wrap' }}>
+            {personalInfo.email && <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Mail size={12} /> {personalInfo.email}</span>}
+            {personalInfo.phone && <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Phone size={12} /> {personalInfo.phone}</span>}
+          </div>
         </div>
-      </div>
+      </header>
       
-      <div style={{ padding: '28px', display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '28px' }}>
+      <div style={{ padding: '40px', display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '40px' }}>
         <div>
-          <section style={{ marginBottom: '28px' }}>
-            <h3 style={{ fontSize: '16px', fontWeight: 800, marginBottom: '10px', color: primaryColor }}>About Me</h3>
-            <p style={{ fontSize: '12px', lineHeight: '1.5', color: textColor }}>{personalInfo.summary}</p>
+          <section style={{ marginBottom: '35px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '8px', background: `${primaryColor}11`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Sparkles size={16} color={primaryColor} />
+              </div>
+              <h3 style={{ fontSize: '18px', fontWeight: 900, margin: 0, color: primaryColor, textTransform: 'uppercase' }}>About Me</h3>
+            </div>
+            <p style={{ fontSize: '13px', lineHeight: '1.7', color: textColor, opacity: 0.9 }}>{personalInfo.summary}</p>
           </section>
  
           <section>
-            <h3 style={{ fontSize: '16px', fontWeight: 800, marginBottom: '12px', color: primaryColor }}>The Journey</h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '8px', background: `${primaryColor}11`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Briefcase size={16} color={primaryColor} />
+              </div>
+              <h3 style={{ fontSize: '18px', fontWeight: 900, margin: 0, color: primaryColor, textTransform: 'uppercase' }}>The Journey</h3>
+            </div>
             {experience.map(exp => (
-              <div key={exp.id} style={{ marginBottom: '20px', borderLeft: `2px solid ${primaryColor}22`, paddingLeft: '14px' }}>
-                <h4 style={{ fontSize: '14px', fontWeight: 700, margin: 0 }}>{exp.role}</h4>
-                <p style={{ fontSize: '12px', color: primaryColor, margin: '3px 0' }}>{exp.company} • {exp.duration}</p>
-                <p style={{ fontSize: '12px', color: textColor, lineHeight: '1.5' }}>{exp.description}</p>
+              <div key={exp.id} style={{ marginBottom: '25px', position: 'relative', paddingLeft: '20px' }}>
+                <div style={{ position: 'absolute', left: 0, top: '6px', width: '8px', height: '8px', borderRadius: '50%', background: primaryColor }}></div>
+                <div style={{ position: 'absolute', left: '3.5px', top: '14px', bottom: '-20px', width: '1px', background: `${primaryColor}22` }}></div>
+                <h4 style={{ fontSize: '15px', fontWeight: 800, margin: 0 }}>{exp.role}</h4>
+                <p style={{ fontSize: '13px', color: primaryColor, fontWeight: 700, margin: '4px 0' }}>{exp.company} • {exp.duration}</p>
+                <p style={{ fontSize: '12.5px', color: textColor, lineHeight: '1.6', opacity: 0.85 }}>{exp.description}</p>
               </div>
             ))}
           </section>
         </div>
  
         <div>
-          <section style={{ backgroundColor: '#f1f5f9', padding: '30px', borderRadius: '20px', marginBottom: '30px' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '15px' }}>Contact</h3>
-            <p style={{ fontSize: '14px', marginBottom: '8px' }}>{personalInfo.email}</p>
-            <p style={{ fontSize: '14px', marginBottom: '8px' }}>{personalInfo.phone}</p>
-            <p style={{ fontSize: '14px' }}>{personalInfo.location}</p>
+          <section style={{ backgroundColor: '#fcfcfc', border: '1px solid #f1f5f9', padding: '30px', borderRadius: '24px', marginBottom: '35px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '15px', textTransform: 'uppercase' }}>Contact</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <p style={{ fontSize: '13px', margin: 0, display: 'flex', alignItems: 'center', gap: '10px' }}><Mail size={14} color={primaryColor} /> {personalInfo.email}</p>
+              <p style={{ fontSize: '13px', margin: 0, display: 'flex', alignItems: 'center', gap: '10px' }}><Phone size={14} color={primaryColor} /> {personalInfo.phone}</p>
+              <p style={{ fontSize: '13px', margin: 0, display: 'flex', alignItems: 'center', gap: '10px' }}><MapPin size={14} color={primaryColor} /> {personalInfo.location}</p>
+            </div>
           </section>
 
-          <section style={{ marginBottom: '30px' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '15px', color: primaryColor }}>Skills</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {skills.map((s, i) => <span key={i} style={{ padding: '6px 12px', background: `${primaryColor}11`, color: primaryColor, borderRadius: 'full', fontSize: '12px', fontWeight: 600, border: `1px solid ${primaryColor}33`, borderRadius: '20px' }}>{s}</span>)}
+          <section style={{ marginBottom: '35px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '20px', color: primaryColor, textTransform: 'uppercase' }}>Mastery</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              {skills.map((s, i) => <span key={i} style={{ padding: '8px 16px', background: `${primaryColor}08`, color: primaryColor, borderRadius: '12px', fontSize: '12px', fontWeight: 800, border: `1.5px solid ${primaryColor}15` }}>{s}</span>)}
             </div>
           </section>
           
-          <section>
-            <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '15px', color: primaryColor }}>Education</h3>
+          <section style={{ marginBottom: '35px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '15px', color: primaryColor, textTransform: 'uppercase' }}>Education</h3>
             {education.map(edu => (
               <div key={edu.id} style={{ marginBottom: '15px' }}>
-                <p style={{ fontSize: '14px', fontWeight: 700, margin: 0, color: textColor }}>{edu.degree}</p>
-                <p style={{ fontSize: '13px', color: textColor, opacity: 0.7 }}>{edu.school}</p>
+                <p style={{ fontSize: '14px', fontWeight: 800, margin: 0, color: textColor }}>{edu.degree}</p>
+                <p style={{ fontSize: '13px', color: primaryColor, fontWeight: 600 }}>{edu.school}</p>
+                <p style={{ fontSize: '11px', opacity: 0.6 }}>{edu.year}</p>
               </div>
             ))}
           </section>
+ 
+          {languages.length > 0 && languages[0] !== '' && (
+            <section style={{ marginBottom: '35px' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 900, marginBottom: '12px', color: primaryColor, textTransform: 'uppercase' }}>Languages</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {languages.map((l, i) => <span key={i} style={{ fontSize: '12.5px', color: textColor, fontWeight: 500 }}>{l}</span>)}
+              </div>
+            </section>
+          )}
+ 
+          {interests.length > 0 && interests[0] !== '' && (
+            <section>
+              <h3 style={{ fontSize: '16px', fontWeight: 900, marginBottom: '12px', color: primaryColor, textTransform: 'uppercase' }}>Interests</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {interests.map((it, i) => <span key={i} style={{ fontSize: '12.5px', color: textColor, fontWeight: 500 }}>{it}</span>)}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>
