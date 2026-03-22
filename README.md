@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/favicon.jpg" width="120" />
+  <img src="public/favicon.jpg" width="120" href="https://cv-template-tan.vercel.app/"/>
   <h1>CV Auto-Designer</h1>
   <p><strong>Craft your professional story with AI-powered precision.</strong></p>
   
@@ -20,7 +20,9 @@
 <div align="center">
   <img src="src/assets/Modern_Theme.png" width="100%" alt="Professional Theme" />
 </div>
+
 ### Professional & Creative Themes
+
 <div align="center">
   <img src="src/assets/Professional_Theme.png" width="48%" alt="Professional Theme" />
   <img src="src/assets/Creative_Theme.png" width="48%" alt="Creative Theme" />
@@ -50,7 +52,7 @@ Generating PDFs from a responsive web layout can be challenging. This project im
 - **Engine**: jsPDF + html2canvas (Custom Integration)
 - **Styling**: Modern Vanilla CSS (Custom Variables & Animations)
 
-## 📦 Getting Started
+## Getting Started
 
 ### Local Development
 1. **Clone & Enter**:
