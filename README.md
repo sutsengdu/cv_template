@@ -10,21 +10,23 @@
 
 ---
 
-## 🌟 Overview
+## Overview
 
 **CV Auto-Designer** is a premium, high-performance web application designed to help professionals create stunning, modern resumes in seconds. Built with a focus on **visual excellence** and **technical stability**, it bridges the gap between sophisticated design and reliable document generation.
 
-## 🎨 Theme Showcase
+## Theme Showcase
 
-````carousel
-![Modern Theme Dashboard](src/assets/Modern_Theme.png)
-<!-- slide -->
-![Professional Theme Dashboard](src/assets/Professional_Theme.png)
-<!-- slide -->
-![Creative Theme Dashboard](src/assets/Creative_Theme.png)
-````
+### Modern Theme
+<div align="center">
+  <img src="src/assets/Modern_Theme.png" width="100%" alt="Professional Theme" />
+</div>
+### Professional & Creative Themes
+<div align="center">
+  <img src="src/assets/Professional_Theme.png" width="48%" alt="Professional Theme" />
+  <img src="src/assets/Creative_Theme.png" width="48%" alt="Creative Theme" />
+</div>
 
-## 🚀 Key Features
+## Key Features
 
 - **Triple-Aesthetic Engine**: Toggle instantly between **Modern**, **Professional**, and **Creative** templates, each with distinct typography and layout hierarchies.
 - **Dynamic Color Orchestration**:
@@ -34,7 +36,7 @@
 - **Stabilized PDF Generator**: A custom rendering layer for `html2canvas` that ensures pixel-perfect exports even from mobile devices (A4 ratio preservation).
 - **Glassmorphism UI**: A premium dashboard experience with an animated background and translucent components.
 
-## 🛠️ Technical Deep-Dive
+## Technical Deep-Dive
 
 ### PDF Export Stabilization
 Generating PDFs from a responsive web layout can be challenging. This project implements a **virtual viewport capture** method:
