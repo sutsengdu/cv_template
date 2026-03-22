@@ -1,0 +1,124 @@
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  min-height: 100vh;
+  min-width: 0;
+}
+
+.preview-wrapper {
+  position: sticky;
+  top: 2rem;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  background: white;
+  color: #1e293b;
+  min-width: 0;
+}
+
+.preview-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Base Responsive */
+@media (max-width: 1200px) {
+  .app-container {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .preview-wrapper {
+    position: relative;
+    top: 0;
+    height: auto;
+    overflow-y: visible;
+    margin-top: 2rem;
+  }
+  
+  header h1 {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-container {
+    padding: 0.75rem;
+  }
+  
+  header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+  
+  #export-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .glass-card {
+    padding: 1.25rem !important;
+  }
+  
+  .personal-info-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  /* Prevent any horizontal overflow */
+  html, body, #root, .app-container {
+    overflow-x: hidden !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main, aside {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .preview-wrapper {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .personal-info-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
