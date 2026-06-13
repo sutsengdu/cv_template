@@ -115,11 +115,11 @@ function CVPreview({ data }) {
       )}
  
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '30px', marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid #f1f5f9' }}>
-        {skills.length > 0 && skills[0] !== '' && (
+        {skills.filter(Boolean).length > 0 && (
           <section>
             <h3 style={{ fontSize: '11px', marginBottom: '10px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Expertise</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-              {skills.map((skill, index) => (
+              {skills.filter(Boolean).map((skill, index) => (
                 <span key={index} style={{ padding: '3px 8px', backgroundColor: `${primaryColor}08`, border: `1px solid ${primaryColor}15`, borderRadius: '4px', fontSize: '10px', fontWeight: 600, color: textColor }}>
                   {skill}
                 </span>
@@ -127,11 +127,11 @@ function CVPreview({ data }) {
             </div>
           </section>
         )}
-        {languages.length > 0 && languages[0] !== '' && (
+        {languages.filter(Boolean).length > 0 && (
           <section>
             <h3 style={{ fontSize: '11px', marginBottom: '10px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Languages</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              {languages.map((lang, index) => (
+              {languages.filter(Boolean).map((lang, index) => (
                 <div key={index} style={{ fontSize: '11px', color: textColor, display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: primaryColor }}></div>
                   {lang}
@@ -140,11 +140,11 @@ function CVPreview({ data }) {
             </div>
           </section>
         )}
-        {interests.length > 0 && interests[0] !== '' && (
+        {interests.filter(Boolean).length > 0 && (
           <section>
             <h3 style={{ fontSize: '11px', marginBottom: '10px', textTransform: 'uppercase', color: primaryColor, fontWeight: 800, letterSpacing: '0.1em', fontFamily: 'Outfit' }}>Interests</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              {interests.map((interest, index) => (
+              {interests.filter(Boolean).map((interest, index) => (
                 <div key={index} style={{ fontSize: '11px', color: textColor, display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: primaryColor }}></div>
                   {interest}
@@ -178,29 +178,29 @@ function CVPreview({ data }) {
           </div>
         </section>
  
-        {skills.length > 0 && skills[0] !== '' && (
+        {skills.filter(Boolean).length > 0 && (
           <section style={{ marginBottom: '30px' }}>
             <h3 style={{ fontSize: '11px', color: primaryColor, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '15px', fontWeight: 800 }}>Expertise</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {skills.map((s, i) => <div key={i} style={{ fontSize: '12px', fontWeight: 500 }}>{s}</div>)}
+              {skills.filter(Boolean).map((s, i) => <div key={i} style={{ fontSize: '12px', fontWeight: 500 }}>{s}</div>)}
             </div>
           </section>
         )}
   
-        {languages.length > 0 && languages[0] !== '' && (
+        {languages.filter(Boolean).length > 0 && (
           <section style={{ marginBottom: '30px' }}>
             <h3 style={{ fontSize: '11px', color: primaryColor, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '15px', fontWeight: 800 }}>Languages</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              {languages.map((l, i) => <div key={i} style={{ fontSize: '11.5px', color: textColor }}>{l}</div>)}
+              {languages.filter(Boolean).map((l, i) => <div key={i} style={{ fontSize: '11.5px', color: textColor }}>{l}</div>)}
             </div>
           </section>
         )}
   
-        {interests.length > 0 && interests[0] !== '' && (
-          <section>
+        {interests.filter(Boolean).length > 0 && (
+          <section style={{ marginBottom: '30px' }}>
             <h3 style={{ fontSize: '11px', color: primaryColor, textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '15px', fontWeight: 800 }}>Interests</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              {interests.map((it, i) => <div key={i} style={{ fontSize: '11.5px', color: textColor }}>{it}</div>)}
+              {interests.filter(Boolean).map((it, i) => <div key={i} style={{ fontSize: '11.5px', color: textColor }}>{it}</div>)}
             </div>
           </section>
         )}
@@ -318,12 +318,14 @@ function CVPreview({ data }) {
             </div>
           </section>
 
-          <section style={{ marginBottom: '35px' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '20px', color: primaryColor, textTransform: 'uppercase' }}>Mastery</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-              {skills.map((s, i) => <span key={i} style={{ padding: '8px 16px', background: `${primaryColor}08`, color: primaryColor, borderRadius: '12px', fontSize: '12px', fontWeight: 800, border: `1.5px solid ${primaryColor}15` }}>{s}</span>)}
-            </div>
-          </section>
+          {skills.filter(Boolean).length > 0 && (
+            <section style={{ marginBottom: '35px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '20px', color: primaryColor, textTransform: 'uppercase' }}>Mastery</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                {skills.filter(Boolean).map((s, i) => <span key={i} style={{ padding: '8px 16px', background: `${primaryColor}08`, color: primaryColor, borderRadius: '12px', fontSize: '12px', fontWeight: 800, border: `1.5px solid ${primaryColor}15` }}>{s}</span>)}
+              </div>
+            </section>
+          )}
           
           <section style={{ marginBottom: '35px' }}>
             <h3 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '15px', color: primaryColor, textTransform: 'uppercase' }}>Education</h3>
@@ -336,20 +338,20 @@ function CVPreview({ data }) {
             ))}
           </section>
  
-          {languages.length > 0 && languages[0] !== '' && (
+          {languages.filter(Boolean).length > 0 && (
             <section style={{ marginBottom: '35px' }}>
               <h3 style={{ fontSize: '16px', fontWeight: 900, marginBottom: '12px', color: primaryColor, textTransform: 'uppercase' }}>Languages</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {languages.map((l, i) => <span key={i} style={{ fontSize: '12.5px', color: textColor, fontWeight: 500 }}>{l}</span>)}
+                {languages.filter(Boolean).map((l, i) => <span key={i} style={{ fontSize: '12.5px', color: textColor, fontWeight: 500 }}>{l}</span>)}
               </div>
             </section>
           )}
  
-          {interests.length > 0 && interests[0] !== '' && (
+          {interests.filter(Boolean).length > 0 && (
             <section>
               <h3 style={{ fontSize: '16px', fontWeight: 900, marginBottom: '12px', color: primaryColor, textTransform: 'uppercase' }}>Interests</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {interests.map((it, i) => <span key={i} style={{ fontSize: '12.5px', color: textColor, fontWeight: 500 }}>{it}</span>)}
+                {interests.filter(Boolean).map((it, i) => <span key={i} style={{ fontSize: '12.5px', color: textColor, fontWeight: 500 }}>{it}</span>)}
               </div>
             </section>
           )}
@@ -361,7 +363,7 @@ function CVPreview({ data }) {
   return (
     <div ref={wrapperRef} style={{ width: '100%', overflow: 'hidden', padding: '1rem 0', display: 'flex', justifyContent: 'center' }}>
       <div style={{ 
-        width: `${Math.min(wrapperRef.current?.offsetWidth || 0, dimensions.w * mmToPx * scale)}px`,
+        width: `${dimensions.w * mmToPx * scale}px`,
         height: `${dimensions.h * mmToPx * scale}px`, 
         position: 'relative',
         overflow: 'hidden'
